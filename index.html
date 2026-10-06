@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Radian Clock</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <script
+      id="MathJax-script"
+      defer
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <div id="clock-container">
+      <div class="main-clock">
+        <span style="--rot: 90deg"><p>\(0\)</p></span>
+        <span style="--rot: 60deg"><p>\(\scriptsize{\frac{\pi}{6}}\)</p></span>
+        <span style="--rot: 30deg"><p>\(\scriptsize{\frac{\pi}{3}}\)</p></span>
+        <span style="--rot: 0deg"><p>\(\frac{\pi}{2}\)</p></span>
+        <span style="--rot: 330deg"
+          ><p>\(\scriptsize{\frac{2\pi}{3}}\)</p></span
+        >
+        <span style="--rot: 300deg"
+          ><p>\(\scriptsize{\frac{5\pi}{6}}\)</p></span
+        >
+        <span style="--rot: 270deg"><p>\(\pi\)</p></span>
+        <span style="--rot: 240deg"
+          ><p>\(\scriptsize{\frac{7\pi}{6}}\)</p></span
+        >
+        <span style="--rot: 210deg"
+          ><p>\(\scriptsize{\frac{4\pi}{3}}\)</p></span
+        >
+        <span style="--rot: 180deg"><p>\(\frac{3\pi}{2}\)</p></span>
+        <span style="--rot: 150deg"
+          ><p>\(\scriptsize{\frac{5\pi}{3}}\)</p></span
+        >
+        <span style="--rot: 120deg"
+          ><p>\(\scriptsize{\frac{11\pi}{6}}\)</p></span
+        >
+
+        <div id="sec" class="hand" style="--clr: #ff3d58; --h: calc(0.9 / 2 * var(--max-size)); transform: rotate(0deg);">
+          <i></i>
+        </div>
+        <div id="min" class="hand" style="--clr: #b6c910; --h: calc(0.75 / 2 * var(--max-size)); transform: rotate(0deg);">
+          <i></i>
+        </div>
+        <div id="hr" class="hand" style="--clr: #4d47c5; --h: calc(0.6 / 2 * var(--max-size)); transform: rotate(0deg);">
+          <i></i>
+        </div>
+      </div>
+    </div>
+    <div id="time-display">
+      <span id="display-time"></span>
+    </div>
+  </body>
+</html>

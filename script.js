@@ -1,28 +1,36 @@
-hour = document.getElementById("hr");
-minute = document.getElementById("min");
-second = document.getElementById("sec");
+const hour = document.getElementById("hr");
+const minute = document.getElementById("min");
+const second = document.getElementById("sec");
 
-updateTime();
+const date = new Date();
+
+let totalSecs = date.getSeconds() + (date.getMinutes() * 60) + (date.getHours() * 3600);
+let totalMins = date.getMinutes() + (date.getSeconds() / 60) + (date.getHours() * 60);
+let totalHours = date.getHours() + (date.getMinutes() / 60);
+
+updateHands();
 
 function rotateTo(element, radians) {
   element.style.transform = `rotate(${(-radians + Math.PI / 2)}rad)`;
 }
 
-function updateTime() {
-  var date = new Date();
+function updateHands() {
+  const tHour = (totalHours / 12) * Math.PI * 2;
+  const tMin = (totalMins / 60) * Math.PI * 2;
+  const tSec = (totalSecs / 60) * Math.PI * 2;
 
-  tHour = (date.getHours() / 12) * Math.PI * 2;
-  tMin = (date.getMinutes() / 60) * Math.PI * 2;
-  tSec = (date.getSeconds() / 60) * Math.PI * 2;
-
-  console.log(tHour, tMin, tSec)
-
-  rotateTo(hour , tHour + (Math.PI / 6) * (date.getMinutes() / 60 + date.getSeconds() / 3600));
-  rotateTo(minute, tMin + (Math.PI / 180.0) * 6 * (date.getSeconds() / 60));
+  rotateTo(hour, tHour);
+  rotateTo(minute, tMin);
   rotateTo(second, tSec);
-
-  // document.getElementById("display-time").innerHTML = `\\(\\large{\\frac{\\pi}{2}}\\)`;
-  // MathJax.typeset();
 }
 
-setInterval(updateTime, 1000);
+function tick() {
+  // Increment continuously so it never hits 0 and wraps backward
+  totalSecs += 1;
+  totalMins += 1 / 60;
+  totalHours += 1 / 3600;
+
+  updateHands();
+}
+
+setInterval(tick, 1000);
